@@ -28,3 +28,6 @@ def bisection(f, a, b, tol=1e-9, max_iter=100):
             return(None)
 
     return((a+b)/2., i)
+    
+if __name__ == '__main__':
+    bisection(lambda x: -2*x + 5, -10, 10)

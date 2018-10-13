@@ -43,10 +43,24 @@ archive
 # Exported files in notebooks directory
 notebooks/*pdf
 notebooks/*html
+notebooks/*pyx
 
-*Bios366_project_data*
 _homework/
 _project/
+test.*
+*.svg
+*pickle
+mb.csv
+notebooks/MCMC*
+notebooks/*sqlite
+nbmerge.py
 
 # OS X junk
 .DS_Store
+
+.domino*
+example_code/
+
+# Private stuff
+Grades*
+students.csv

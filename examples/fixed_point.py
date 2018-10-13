@@ -1,22 +1,15 @@
-precip = pd.read_table("../data/nashville_precip.txt", sep='\s+')
+import numpy as np
 
-month = 'Sep'
-
-# Calculate statistics
-log_mean = precip.mean().apply(np.log)
-mean_log = precip.apply(np.log).mean()
-
-from scipy.special import psi
-
-def dlgamma(m): 
-    return np.log(m) - psi(m) - log_mean[month] + mean_log[month]
+def fixed_point(func, a0, tol=1e-10):
     
-fp = lambda x: dlgamma(x) + x
-
-a0 = 4
-a = fp(a0)
-while np.abs(a-a0) > 1e-6:
-    a0 = a
-    a = fp(a0)
+    a = func(a0)
     
-print(a)
+    while np.abs(a - a0) > tol:
+        a0 = a
+        a = func(a0)
+        
+    return a
+
+g = lambda x: (5 - x**3) / 5
+
+fixed_point(g, 0.75)
